@@ -10,8 +10,9 @@ namespace MyApp // Note: actual namespace depends on the project name.
         static async Task Main(string[] args)
         {
             var db = redis.GetDatabase();
-            var pong = await db.PingAsync();
-            Console.WriteLine(pong);
+            db.StringSet("key1", "Dadon From Redis");
+            var redisValue = db.StringGet("key1");
+            Console.WriteLine(redisValue);
         }
     }
 }
